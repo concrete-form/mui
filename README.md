@@ -22,7 +22,7 @@
 <img alt="Tree shaking supported"src="https://img.shields.io/badge/Tree%20shaking-supported-success?style=flat-square" style="margin:3px" />
   <a href="https://www.npmjs.com/package/@concrete-form/mui">
     <img alt="License" style="margin:3px" 
-    src="https://img.shields.io/npm/l/@concrete-form/mui?color=%23007ec6&style=flat-square&v=3" />
+    src="https://img.shields.io/npm/l/@concrete-form/mui?color=%23007ec6&style=flat-square" />
   </a>
 </div>
 
@@ -30,7 +30,7 @@
 
 ## Implementation
 
-[**Material-UI**](https://mui.com/) (V4+) implementation for [**Concrete form**](https://github.com/concrete-form/concrete-form)
+[**Material-UI**](https://mui.com/) (V5+) implementation for [**Concrete form**](https://github.com/concrete-form/concrete-form)
 
 ## Install
 
