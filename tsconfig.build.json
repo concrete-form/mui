@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "target": "es6",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "dist",
+  },
+  "include": [
+    "src/*",
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/storybook",
+    "src/testkit",
+    "src/setupTests.ts",
+    "**/*.d.ts",
+    "**/__tests__",
+    "**/__snapshots__",
+    "**/*.test.js",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.js",
+    "**/*.spec.ts",
+    "**/*.spec.tsc",
+    "**/*.stories.js",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
+}
