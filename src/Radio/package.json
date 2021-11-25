@@ -1,0 +1,6 @@
+{
+  "sideEffects": false,
+  "module": "./index.js",
+  "main": "../cjs/Radio/index.js",
+  "types": "./index.d.ts"
+}
