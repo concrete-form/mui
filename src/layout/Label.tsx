@@ -4,9 +4,9 @@ import {
 } from '@concrete-form/core'
 import FormLabel, { FormLabelProps } from '@mui/material/FormLabel'
 
-export type LabelProps = CoreLabelLayoutProps & FormLabelProps
+export type LabelLayoutProps = CoreLabelLayoutProps & FormLabelProps
 
-const Label: React.FC<LabelProps> = (props) => {
+const Label: React.FC<LabelLayoutProps> = (props) => {
   const {
     label,
     htmlFor,
@@ -15,7 +15,6 @@ const Label: React.FC<LabelProps> = (props) => {
   return (
     <CustomizableLayout type="label" props={props}>
       <FormLabel
-        className="concreteform-label"
         htmlFor={htmlFor}
         {...labelProps}
       >

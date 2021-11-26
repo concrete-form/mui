@@ -1,6 +1,13 @@
-import { ItemLabelLayoutProps, CustomizableLayout } from '@concrete-form/core'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import { ReactElement } from 'react'
+import React from 'react'
+import {
+  ItemLabelLayoutProps as CoreItemLabelLayoutProps,
+  CustomizableLayout,
+} from '@concrete-form/core'
+import FormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
+
+type PartialFormControlLabelProps = Omit<FormControlLabelProps, 'control'|'label'|'checked'|'inputRef'|'labelPlacement'|'value'>
+
+export type ItemLabelLayoutProps = CoreItemLabelLayoutProps & PartialFormControlLabelProps
 
 const ItemLabel: React.FC<ItemLabelLayoutProps> = (props) => {
   const {
@@ -27,8 +34,8 @@ const ItemLabel: React.FC<ItemLabelLayoutProps> = (props) => {
   return (
     <CustomizableLayout type="itemLabel" props={props}>
       <FormControlLabel
-        control={control as ReactElement}
-        label={(label ?? '') as ReactElement}
+        control={control as React.ReactElement}
+        label={(label ?? '') as React.ReactElement}
         labelPlacement={getLabelPlacement()}
         data-testid="item-label"
         data-label-position={labelPosition}

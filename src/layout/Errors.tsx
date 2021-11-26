@@ -1,20 +1,25 @@
 import React from 'react'
-import { ErrorsLayoutProps, CustomizableLayout, Translation, useTranslator } from '@concrete-form/core'
-import FormHelperText from '@mui/material/FormHelperText'
+import {
+  ErrorsLayoutProps as CoreErrorsLayoutProps,
+  CustomizableLayout,
+} from '@concrete-form/core'
+
+export type ErrorsLayoutProps = CoreErrorsLayoutProps
 
 const Errors: React.FC<ErrorsLayoutProps> = (props) => {
-  const { errors } = props
-  const translate = useTranslator()
+  const {
+    errors,
+  } = props
+
   return (
     <CustomizableLayout type="errors" props={props}>
-      <FormHelperText>
-
-        { errors.map((error: Translation) => {
-          const translatedError = translate(error)
-          return <React.Fragment key={translatedError}>{ translatedError }<br /></React.Fragment>
-        }) }
-
-      </FormHelperText>
+      <>
+        { errors.map(error => (
+          <React.Fragment key={error}>
+            { error }<br />
+          </React.Fragment>
+        )) }
+      </>
     </CustomizableLayout>
   )
 }

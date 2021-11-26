@@ -1,6 +1,8 @@
 import React from 'react'
-import { useControlState, CustomizableLayout, useTranslator, Translation } from '@concrete-form/core'
+import { useControlState, CustomizableLayout, useTranslator } from '@concrete-form/core'
 import TextField, { TextFieldProps } from '@mui/material/TextField'
+
+import Errors from '../layout/Errors'
 
 type TextFieldWithErrorsProps = {
   name: string
@@ -9,16 +11,15 @@ type TextFieldWithErrorsProps = {
 const TextFieldWithErrors: React.FC<TextFieldWithErrorsProps> = ({ name, children, ...textFieldProps }) => {
   const { errors } = useControlState(name)
   const translate = useTranslator()
-  const renderErrors = () => (
-    <CustomizableLayout type="errors" props={{ name, errors }}>
-      <>
-        { errors.map((error: Translation) => {
-          const translatedError = translate(error)
-          return <React.Fragment key={translatedError}>{ translatedError }<br /></React.Fragment>
-        }) }
-      </>
-    </CustomizableLayout>
-  )
+
+  const renderErrors = () => {
+    return (
+      <Errors
+        name={name}
+        errors={errors.map(translate)}
+      />
+    )
+  }
 
   const control = (
     <TextField
@@ -33,9 +34,8 @@ const TextFieldWithErrors: React.FC<TextFieldWithErrorsProps> = ({ name, childre
   )
 
   return (
-    <CustomizableLayout type="control" props={{ name, control, errors }}>
-      { /* eslint-disable-next-line react/jsx-no-useless-fragment */ }
-      <>{ control }</>
+    <CustomizableLayout type="control" props={{ name, control }}>
+      { control }
     </CustomizableLayout>
   )
 }
