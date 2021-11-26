@@ -4,9 +4,6 @@ import {
   useControlProps,
   useControlState,
   useControlActions,
-  // removeEventHandlers,
-  // extractEventHandlers,
-  // mergeEventHandlers,
 } from '@concrete-form/core'
 import Switch, { SwitchProps as MuiSwitchProps } from '@mui/material/Switch'
 import { FormControlProps } from '@mui/material/FormControl'
