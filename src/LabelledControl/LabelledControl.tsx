@@ -1,5 +1,5 @@
 import {
-  LabelledcontrolProps as CoreLabelledcontrolProps,
+  LabelledControlProps as CoreLabelledControlProps,
   useControlLabelFor,
 } from '@concrete-form/core'
 import { GridProps } from '@mui/material/Grid'
@@ -8,13 +8,13 @@ import { FormLabelProps } from '@mui/material/FormLabel'
 import LabelledControlLayout from '../layout/LabelledControl'
 import Label from '../layout/Label'
 
-export type LabelledcontrolProps = CoreLabelledcontrolProps & {
+export type LabelledControlProps = CoreLabelledControlProps & {
   mainGridProps?: GridProps
   labelGridProps?: GridProps
   controlGridProps?: GridProps
 }
 
-const Labelledcontrol: React.FC<LabelledcontrolProps & FormLabelProps> = ({
+const Labelledcontrol: React.FC<LabelledControlProps & FormLabelProps> = ({
   label,
   labelPosition,
   children,

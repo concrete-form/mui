@@ -1,10 +1,10 @@
 import { CustomizableLayout } from '@concrete-form/core'
 import Grid from '@mui/material/Grid'
-import { LabelledcontrolProps } from '../LabelledControl/LabelledControl'
+import { LabelledControlProps } from '../LabelledControl/LabelledControl'
 
-export type LabelledcontrolLayoutProps = LabelledcontrolProps
+export type LabelledControlLayoutProps = LabelledControlProps
 
-const LabelledControl: React.FC<LabelledcontrolLayoutProps> = (props) => {
+const LabelledControl: React.FC<LabelledControlLayoutProps> = (props) => {
   const {
     control,
     label,

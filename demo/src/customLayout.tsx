@@ -10,7 +10,7 @@ import {
   ControlLayoutProps,
   ErrorsLayoutProps,
   LabelLayoutProps,
-  LabelledcontrolLayoutProps,
+  LabelledControlLayoutProps,
   ItemsGroupLayoutProps,
   ItemLabelLayoutProps,
 } from '@concrete-form/mui/layout'
@@ -93,7 +93,7 @@ const Label: React.FC<LabelLayoutProps> = ({
   )
 }
 
-const LabelledControl: React.FC<LabelledcontrolLayoutProps> = ({
+const LabelledControl: React.FC<LabelledControlLayoutProps> = ({
   control,
   label,
   labelPosition = 'left',
