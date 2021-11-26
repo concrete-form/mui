@@ -38,7 +38,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   useEffect(() => {
     if (Array.isArray(fieldValue)) {
-      setValue(fieldValue ?? [])
+      setValue(fieldValue)
     }
   }, [fieldValue])
 

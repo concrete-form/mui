@@ -90,6 +90,12 @@ describe('Checkbox', () => {
     expect(screen.getByRole('checkbox', { name: 'baz' })).toBeChecked()
   })
 
+  it('ignores invalid string value', () => {
+    render(<Checkbox name="test" options={['foo', 'bar']} />, { formValues: { test: 'foo' } })
+    expect(screen.getByRole('checkbox', { name: 'foo' })).not.toBeChecked()
+    expect(screen.getByRole('checkbox', { name: 'bar' })).not.toBeChecked()
+  })
+
   it('render new value when changed', async () => {
     render(<Checkbox name="test" options={['foo', 'bar']} />, { formValues: { test: ['bar'] } })
     const fooOption = screen.getByRole('checkbox', { name: 'foo' })
