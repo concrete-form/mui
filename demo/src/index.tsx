@@ -4,6 +4,7 @@ import reportWebVitals from './reportWebVitals'
 import { LocalizationProvider } from '@mui/lab/'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
+import './styles.css'
 import App from './App'
 
 ReactDOM.render(

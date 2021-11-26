@@ -1,0 +1,135 @@
+/***************/
+/* demo layout */
+/***************/
+
+.custom-control {
+  border: solid 3px rgb(255, 20, 145);
+  background: rgb(255, 219, 238);
+  margin: 5px;
+}
+
+.custom-control-control-wrapper {
+  padding: 5px;
+}
+
+.custom-control-errors-wrapper {
+  padding: 5px;
+  border-top: solid 3px rgb(255, 20, 145);
+}
+
+.custom-errors {
+  display: block;
+  color: rgb(255, 0, 0);
+  border: solid 3px rgb(255, 0, 0);
+  background: rgb(255, 216, 216);
+  padding: 5px;
+  margin: 5px;
+}
+
+.custom-label {
+  display: inline-block;
+  border: solid 3px rgb(128, 0, 128);
+  background: rgb(255, 197, 255);
+  padding: 5px;
+  margin: 5px;
+}
+
+.custom-labelled-control{
+  border: solid 3px rgb(0, 0, 255);
+  background: rgb(216, 216, 255);
+  padding: 5px;
+  margin: 15px
+}
+
+.custom-items-group{
+  border: solid 3px rgb(255, 166, 0);
+  background: rgb(255, 241, 216);
+  padding: 5px;
+  margin: 5px;
+}
+
+.custom-item-label{
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.custom-item-label > label {
+  width: 100%;
+  border: solid 3px rgb(0, 100, 0);
+  background: rgb(193, 255, 193);
+  margin: 0;
+  padding: 0;
+}
+
+.custom-item-label > label > *:last-child {
+  border-left: solid 3px rgb(0, 100, 0);
+  height: 100%;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/***************/
+
+
+
+/* .demo-labelled-control {
+  display: flex;
+  border: solid 3px rgb(0, 0, 255);
+  background: rgb(216, 216, 255);
+  padding: 5px;
+  margin: 15px
+}
+.demo-labelled-control > *:first-child {
+  width: 40%;
+}
+.demo-labelled-control > *:last-child {
+  width: 60%;
+}
+
+.demo-control, .demo-control {
+  border: solid 3px rgb(255, 20, 145);
+  background: rgb(255, 219, 238);
+  padding: 5px;
+  margin: 5px;
+}
+
+.demo-errors {
+  color: rgb(255, 0, 0);
+  border: solid 3px rgb(255, 0, 0);
+  background: rgb(255, 216, 216);
+  padding: 5px;
+  margin: 5px;
+}
+
+.demo-item-label {
+  display: flex;
+  border: solid 3px rgb(0, 100, 0);
+  background: rgb(193, 255, 193);
+  margin: 5px;
+}
+.demo-item-label.concreteform-right > *:first-child, .demo-item-label.concreteform-left > *:last-child {
+  border-right: solid 3px rgb(0, 100, 0);
+}
+.demo-item-label > * {
+  padding: 5px;
+}
+
+.demo-items-group {
+  border: solid 3px rgb(255, 166, 0);
+  background: rgb(255, 241, 216);
+  padding: 5px;
+  margin: 5px;
+}
+
+.demo-label {
+  display: inline-block;
+  border: solid 3px rgb(128, 0, 128);
+  background: rgb(255, 197, 255);
+  padding: 5px;
+  margin: 5px;
+} */
+
+/***************/
