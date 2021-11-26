@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/mui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Kevin Gilbert",
   "description": "Material-UI implementation for Concrete Form",
   "keywords": [

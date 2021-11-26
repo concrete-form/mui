@@ -26,7 +26,7 @@ export const DefaultControl = template.bind({})
 DefaultControl.args = {
   name: 'demo',
   fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo: 'second' } },
+  formContext: { defaultValues: { demo: ['second'] } },
   options: defaultOptions,
 }
 
@@ -39,6 +39,6 @@ CustomIcon.args = {
   icon: <FavoriteBorder />,
   checkedIcon: <Favorite />,
   fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo2: 'second' } },
+  formContext: { defaultValues: { demo2: ['second'] } },
   options: defaultOptions,
 }

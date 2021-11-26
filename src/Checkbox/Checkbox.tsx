@@ -33,11 +33,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const { value: fieldValue } = useControlState(name)
   const { setFieldValue } = useControlActions(name)
   const parsedOptions = useMemo(() => parseCheckboxOptions(options), [options])
-  const [value, setValue] = useState(fieldValue ?? [])
+  const [value, setValue] = useState(Array.isArray(fieldValue) ? fieldValue : [])
   const styles = useMemo(() => fixMuiLabelPosition(orientation, labelPosition), [orientation, labelPosition])
 
   useEffect(() => {
-    setValue(fieldValue ?? [])
+    if (Array.isArray(fieldValue)) {
+      setValue(fieldValue ?? [])
+    }
   }, [fieldValue])
 
   const isChecked = (checkboxValue: string) => !!value?.includes(checkboxValue)
