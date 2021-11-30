@@ -27,7 +27,7 @@ type MuiSelectOptionsProps = {
   native?: false|undefined
 } & CoreSelectProps<ListSubheaderProps, MenuItemProps, React.ReactNode>
 type MixedSelectProps = NativeOptionsSelectProps | MuiSelectOptionsProps
-type PartialMuiSelectProps = Omit<MuiSelectProps, 'defaultValue'|'id'|'input'|'label'|'labelId'|'native'|'name'|'inputRef'|'ref'>
+type PartialMuiSelectProps = Omit<MuiSelectProps, 'defaultValue'|'id'|'input'|'native'|'name'|'inputRef'|'ref'>
 
 export type SelectProps = MixedSelectProps & {
   native?: boolean
@@ -51,7 +51,7 @@ const Select: React.FC<SelectProps> = ({
   textFieldProps,
   ...selectProps
 }) => {
-  const { ref, ...props } = useControlProps(name, selectProps)
+  const props = useControlProps(name, selectProps)
   const { value } = useControlState(name)
   const initialValue = useRef(value)
   const { setFieldValue } = useControlActions(name)
@@ -137,9 +137,9 @@ const Select: React.FC<SelectProps> = ({
     <TextFieldWithErrors
       name={name}
       {...textFieldProps}
-      defaultValue={multiple ? (initialValue.current ?? []) : (initialValue.current ?? '')}
       SelectProps={{
         ...controlledProps,
+        defaultValue: multiple ? (initialValue.current ?? []) : (initialValue.current ?? ''),
         native,
         multiple,
       }}
