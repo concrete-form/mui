@@ -18,7 +18,7 @@ TypeDate.args = {
   name: 'demo1',
   type: 'date',
   fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo1: new Date() } },
+  formContext: { defaultValues: { demo1: new Date('2021-01-01T00:00:00') } },
 }
 
 export const TypeTime = template.bind({})
@@ -28,7 +28,7 @@ TypeTime.args = {
   name: 'demo2',
   type: 'time',
   fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo2: new Date() } },
+  formContext: { defaultValues: { demo2: new Date('2021-01-01T00:00:00') } },
 }
 
 export const TypeDateTime = template.bind({})
@@ -38,5 +38,5 @@ TypeDateTime.args = {
   name: 'demo3',
   type: 'datetime',
   fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo3: new Date() } },
+  formContext: { defaultValues: { demo3: new Date('2021-01-01T00:00:00') } },
 }

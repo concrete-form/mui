@@ -40,7 +40,7 @@ yarn add @concrete-form/mui
 npm install @concrete-form/mui
 ```
 ## Storybook
-[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://6193c82ff0559c003a4fdcba-sbegroelnw.chromatic.com)
+[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://master--6193c82ff0559c003a4fdcba.chromatic.com/)
 
 Thanks to [Chromatic](https://www.chromatic.com/) (They're awesome !)
 
