@@ -8,6 +8,7 @@
     "@concrete-form/react-hook-form": "link:../node_modules/@concrete-form/react-hook-form",
     "@emotion/react": "link:../node_modules/@emotion/react",
     "@emotion/styled": "link:../node_modules/@emotion/styled",
+    "@hookform/resolvers": "link:../node_modules/@hookform/resolvers",
     "@mui/material": "link:../node_modules/@mui/material",
     "@mui/icons-material": "link:../node_modules/@mui/icons-material",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
@@ -25,7 +26,8 @@
     "react-scripts": "link:../node_modules/react-scripts",
     "serve": "^12.0.1",
     "typescript": "link:../node_modules/typescript",
-    "web-vitals": "link:../node_modules/web-vitals"
+    "web-vitals": "link:../node_modules/web-vitals",
+    "yup": "link:../node_modules/yup"
   },
   "scripts": {
     "start:umd": "serve .",
