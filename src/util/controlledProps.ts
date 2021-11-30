@@ -22,5 +22,9 @@ export const getControlledProps = (props: AnyProps, inputProps: AnyProps, eventH
     ...extractEventHandlers(inputProps),
     ...mergedEvents,
     ref: undefined,
+    value: undefined,
+    defaultValue: undefined,
+    checked: undefined,
+    defaultChecked: undefined,
   }
 }
