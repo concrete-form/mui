@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/mui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Kevin Gilbert",
   "description": "Material-UI implementation for Concrete Form",
   "keywords": [
@@ -60,9 +60,11 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/runtime": "^7.16.0",
-    "@concrete-form/react-hook-form": "^0.0.53",
+    "@concrete-form/formik": "^0.0.5",
+    "@concrete-form/react-hook-form": "^0.0.56",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
+    "@hookform/resolvers": "^2.8.3",
     "@mui/icons-material": "^5.1.1",
     "@mui/lab": "^5.0.0-alpha.55",
     "@mui/material": "^5.1.1",
@@ -87,6 +89,7 @@
     "cross-env": "^7.0.3",
     "date-fns": "^2.25.0",
     "eslint-plugin-standard-cra": "^1.0.7",
+    "formik": "^2.2.9",
     "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -95,7 +98,8 @@
     "storybook": "^6.3.12",
     "storybook-addon-material-ui5": "^1.0.0",
     "typescript": "^4.4.4",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "babel-loader": "8.1.0"
