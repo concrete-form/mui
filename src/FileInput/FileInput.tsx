@@ -8,6 +8,6 @@ export type FileInputProps = CoreFileInputProps & Omit<InputProps, 'type'>
 
 const FileInput: React.FC<FileInputProps> = ({
   ...inputProps
-}) => <Input {...inputProps} type="file" value={undefined} defaultValue="" />
+}) => <Input {...inputProps} type="file" />
 
 export default FileInput

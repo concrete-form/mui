@@ -13,13 +13,15 @@ const Input: React.FC<InputProps> = ({
   name,
   ...inputProps
 }) => {
-  const { ref, ...props } = useControlProps(name, inputProps)
+  const { ref, type, value, ...props } = useControlProps(name, inputProps)
 
   return (
     <TextFieldWithErrors
       name={name}
       inputRef={ref}
       {...props}
+      type={type}
+      value={type === 'file' ? undefined : value}
     />
   )
 }
