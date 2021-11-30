@@ -5,7 +5,7 @@ import {
   useControlState,
   useControlActions,
 } from '@concrete-form/core'
-import MuiAutocomplete, { AutocompleteProps as MuiAutocompleteProps } from '@mui/material/Autocomplete'
+import MuiAutocomplete, { AutocompleteProps as MuiAutocompleteProps, AutocompleteChangeReason } from '@mui/material/Autocomplete'
 import { TextFieldProps } from '@mui/material/TextField'
 
 import TextFieldWithErrors from '../util/TextFieldWithErrors'
@@ -28,24 +28,51 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
   const { setFieldValue } = useControlActions(name)
   const initialValue = useRef(value)
 
-  const onChange = (event: unknown, newValue: any, reason: string) => {
-    setFieldValue(newValue === null ? '' : newValue, true)
+  const multiple = !!inputProps.multiple
+
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (event.target.value === '' && !multiple) {
+      setFieldValue('', true, true)
+    }
   }
 
-  const onBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFieldValue(event.target.value, true, true)
+  const onChange = async (event: React.SyntheticEvent<Element, Event>, newValue: any, reason: AutocompleteChangeReason, ...rest: any) => {
+    if (inputProps?.onChange) {
+      event.defaultPrevented = false
+      await inputProps.onChange(event, newValue, reason, ...rest)
+      if (event.defaultPrevented) {
+        return
+      }
+    }
+
+    switch (reason) {
+      case 'clear':
+        if (multiple) {
+          setFieldValue([], true)
+        } else {
+          setFieldValue('', true)
+        }
+        return
+      case 'selectOption':
+      case 'createOption':
+      case 'removeOption':
+        setFieldValue(newValue, true)
+    }
   }
 
-  const controlledProps = getControlledProps(props, inputProps, { onChange, onBlur }) as unknown as PartialMuiAutocompleteProps
+  const onInputChange = (_: unknown, newValue: string, reason: string) => {
+    if (reason === 'input' && inputProps.freeSolo && !multiple) {
+      setFieldValue(newValue, true)
+    }
+  }
 
-  /* MUI Autocomplete control the rendered input so we also need to control it */
-  // fixme : there is a bug when you select an option with keyboard (mui does not call onChange or any other event handlers)
-  // so when selecting a value with keyboard and submitting form without triggering onBlur, the value is not save
+  const controlledProps = getControlledProps(props, inputProps, { onInputChange, onBlur }) as unknown as PartialMuiAutocompleteProps
 
   return (
     <MuiAutocomplete
       {...controlledProps}
-      defaultValue={initialValue.current}
+      onChange={onChange}
+      defaultValue={initialValue.current !== '' ? initialValue.current : undefined}
       renderInput={params => (
         <TextFieldWithErrors
           name={name}

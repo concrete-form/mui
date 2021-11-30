@@ -1,5 +1,5 @@
 import render from '../testkit/render'
-import { screen, waitFor } from '@testing-library/react'
+import { screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Autocomplete from './Autocomplete'
 
@@ -33,21 +33,45 @@ describe('Autocomplete', () => {
   })
 
   it('render new value when changed', () => {
-    render(<Autocomplete name="test" options={options} />)
+    render(<Autocomplete name="test" options={options} />, { formValues: { test: '' } })
     const input = screen.getByRole('textbox')
     userEvent.type(input, 'bar')
     expect(input).toHaveDisplayValue('bar')
   })
 
   it('call onChange callback', async () => {
-    const callback = jest.fn()
-    render(<Autocomplete name="test" options={options} onChange={callback} />)
+    const onChange = jest.fn()
+    render(<Autocomplete name="test" options={options} onChange={onChange} />)
     userEvent.type(screen.getByRole('textbox'), 'baz')
     userEvent.click(screen.getByRole('option', { name: 'baz' }))
 
     userEvent.click(document.body)
     await waitFor(() => {
-      expect(callback).toHaveBeenCalled()
+      expect(onChange).toHaveBeenCalled()
+    })
+  })
+
+  it('prevent value change when onChange event.preventDefault() is called', async () => {
+    const onChange = jest.fn((event: React.SyntheticEvent<Element, Event>) => {
+      event.preventDefault()
+    })
+    const onSubmit = jest.fn()
+    render((
+      <>
+        <Autocomplete name="test" options={options} onChange={onChange} />
+        <button type="submit">submit</button>
+      </>
+    ), {
+      onSubmit,
+      formValues: { test: 'foo' },
+    })
+    const input = screen.getByRole('textbox')
+
+    userEvent.type(input, 'baz{arrowdown}{enter}')
+
+    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ test: 'foo' }, expect.anything())
     })
   })
 
@@ -61,7 +85,7 @@ describe('Autocomplete', () => {
     })
   })
 
-  it('save data on the form', async () => {
+  it('save data on the form when an option is selected', async () => {
     const onSubmit = jest.fn()
     render(<><Autocomplete name="test" options={options} /><button type="submit">submit</button></>, { onSubmit })
     const input = screen.getByRole('textbox')
@@ -71,6 +95,42 @@ describe('Autocomplete', () => {
     userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
+    })
+  })
+
+  it('save data on the form when a value is type with freeSolo enabled', async () => {
+    const onSubmit = jest.fn()
+    render(<><Autocomplete name="test" options={options} freeSolo /><button type="submit">submit</button></>, { onSubmit })
+    const input = screen.getByRole('textbox')
+
+    userEvent.type(input, 'Hello')
+
+    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ test: 'Hello' }, expect.anything())
+    })
+  })
+
+  it('handles multiple values', async () => {
+    const onSubmit = jest.fn()
+    render((
+      <>
+        <Autocomplete name="test" options={options} multiple freeSolo />
+        <button type="submit">submit</button>
+      </>
+    ), {
+      onSubmit,
+      formValues: { test: ['foo', 'a', 'b'] },
+    })
+    const input = screen.getByRole('textbox')
+    // removing option "a"
+    const optionA = screen.getByRole('button', { name: 'a' })
+    userEvent.click(within(optionA).getByTestId('CancelIcon'))
+    // creating option "c"
+    userEvent.type(input, 'c{enter}')
+    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith({ test: ['foo', 'b', 'c'] }, expect.anything())
     })
   })
 
@@ -93,20 +153,50 @@ describe('Autocomplete', () => {
       expect(screen.getByLabelText('foo')).toBeInTheDocument()
     })
 
-    it('send an empty string when resetting the field', async () => {
+    it('value is empty string when clearing the field', async () => {
+      const onSubmit = jest.fn()
+      render((
+        <>
+          <Autocomplete name="test" options={options} />
+          <button type="submit">submit</button>
+        </>
+      ), { onSubmit, formValues: { test: 'foo' } })
+      const input = screen.getByRole('textbox')
+      userEvent.hover(input)
+      userEvent.click(await screen.findByLabelText('Clear'))
+      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith({ test: '' }, expect.anything())
+      })
+    })
+
+    it('value is empty array when clearing the field with multiple=true', async () => {
+      const onSubmit = jest.fn()
+      render((
+        <>
+          <Autocomplete name="test" options={options} multiple />
+          <button type="submit">submit</button>
+        </>
+      ), { onSubmit, formValues: { test: ['foo'] } })
+      const input = screen.getByRole('textbox')
+      userEvent.hover(input)
+      userEvent.click(await screen.findByLabelText('Clear'))
+      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith({ test: [] }, expect.anything())
+      })
+    })
+
+    it('ignores invalid input', async () => {
       const onSubmit = jest.fn()
       render(<><Autocomplete name="test" options={options} /><button type="submit">submit</button></>, { onSubmit })
       const input = screen.getByRole('textbox')
 
-      userEvent.type(input, 'baz{arrowdown}{enter}')
-      userEvent.click(document.body)
-      userEvent.hover(input)
-
-      userEvent.click(await screen.findByLabelText('Clear'))
+      userEvent.type(input, 'invalid data')
 
       userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
-        expect(onSubmit).toHaveBeenCalledWith({ test: '' }, expect.anything())
+        expect(onSubmit).toHaveBeenCalledWith({ test: undefined }, expect.anything())
       })
     })
   })
