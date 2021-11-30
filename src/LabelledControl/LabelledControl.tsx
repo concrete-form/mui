@@ -14,7 +14,7 @@ export type LabelledControlProps = CoreLabelledControlProps & {
   controlGridProps?: GridProps
 }
 
-const Labelledcontrol: React.FC<LabelledControlProps & FormLabelProps> = ({
+const LabelledControl: React.FC<LabelledControlProps & FormLabelProps> = ({
   label,
   labelPosition,
   children,
@@ -36,4 +36,4 @@ const Labelledcontrol: React.FC<LabelledControlProps & FormLabelProps> = ({
   )
 }
 
-export default Labelledcontrol
+export default LabelledControl

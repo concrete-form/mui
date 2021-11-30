@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react'
 import Container from '@mui/material/Container'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import { LabelledcontrolProps } from '@concrete-form/core'
+import { LabelledControlProps } from '@concrete-form/core'
 import LabelledControl from './LabelledControl'
 import Input from '../Input'
 import Checkbox from '../Checkbox'
@@ -13,7 +13,7 @@ export default {
   argTypes,
 }
 
-const templateWithSingleControl: Story<FormContextArgs<LabelledcontrolProps>> = ({ formContext, ...props }) => (
+const templateWithSingleControl: Story<FormContextArgs<LabelledControlProps>> = ({ formContext, ...props }) => (
   <Container maxWidth="md">
     <LabelledControl {...props}>
       <Input name="demo" fieldProps={{ required: true }} />
@@ -21,7 +21,7 @@ const templateWithSingleControl: Story<FormContextArgs<LabelledcontrolProps>> = 
   </Container>
 )
 
-const templateWithControlGroup: Story<FormContextArgs<LabelledcontrolProps>> = ({ formContext, ...props }) => (
+const templateWithControlGroup: Story<FormContextArgs<LabelledControlProps>> = ({ formContext, ...props }) => (
   <Container maxWidth="md">
     <LabelledControl {...props}>
       <Checkbox name="demo" options={['foo', 'bar', 'baz']} fieldProps={{ required: true }} />
