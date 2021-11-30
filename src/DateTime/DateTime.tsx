@@ -76,8 +76,8 @@ const DateTime: React.FC<DateTimeProps> = ({
               onBlur={mergeEventHandlers(textFieldProps?.onBlur, onBlur)}
             />
           )}
-          value={value ?? null}
           {...(controlledProps as unknown as Omit<TimePickerProps<any>, 'renderInput'|'value'>)}
+          value={value ?? null}
         />
       )
     case 'datetime':
@@ -93,8 +93,8 @@ const DateTime: React.FC<DateTimeProps> = ({
               onBlur={mergeEventHandlers(textFieldProps?.onBlur, onBlur)}
             />
           )}
-          value={value ?? null}
           {...(controlledProps as unknown as Omit<DateTimePickerProps<any>, 'renderInput'|'value'>)}
+          value={value ?? null}
         />
       )
     case 'date':
@@ -111,8 +111,8 @@ const DateTime: React.FC<DateTimeProps> = ({
               onBlur={mergeEventHandlers(textFieldProps?.onBlur, onBlur)}
             />
           )}
-          value={value ?? null}
           {...(controlledProps as unknown as Omit<DatePickerProps<any>, 'renderInput'|'value'>)}
+          value={value ?? null}
         />
       )
   }
