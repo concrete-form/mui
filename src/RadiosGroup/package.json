@@ -1,6 +1,6 @@
 {
   "sideEffects": false,
   "module": "./index.js",
-  "main": "../cjs/Radio/index.js",
+  "main": "../cjs/RadiosGroup/index.js",
   "types": "./index.d.ts"
 }

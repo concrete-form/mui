@@ -2,16 +2,17 @@ import { Story } from '@storybook/react'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import { formContext, FormContextArgs, argTypes } from '../storybook/formContext'
-import Checkbox, { CheckboxProps } from './Checkbox'
+import RadiosGroup, { RadiosGroupProps } from './RadiosGroup'
 
 export default {
-  component: Checkbox,
-  title: 'Controls Group/Checkbox',
+  component: RadiosGroup,
+  title: 'Controls Group/Radios',
   decorators: [formContext],
   argTypes,
 }
 
 const defaultOptions = [
+  { label: <em>None</em>, value: '' },
   'first',
   { label: 'with label', value: 'second' },
   { label: <span style={{ fontWeight: 'bold', color: 'deeppink' }}>with style</span>, value: 'third' },
@@ -19,14 +20,16 @@ const defaultOptions = [
   'last',
 ]
 
-const template: Story<FormContextArgs<CheckboxProps>> = ({ formContext, ...props }) => <Checkbox {...props} />
+const validateNotEmpty = (value: string) => value === '' ? 'This field is required' : true
+
+const template: Story<FormContextArgs<RadiosGroupProps>> = ({ formContext, ...props }) => <RadiosGroup {...props} />
 
 export const DefaultControl = template.bind({})
 
 DefaultControl.args = {
   name: 'demo',
-  fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo: ['second'] } },
+  fieldProps: { validate: validateNotEmpty },
+  formContext: { defaultValues: { demo: 'second' } },
   options: defaultOptions,
 }
 
@@ -38,7 +41,7 @@ CustomIcon.args = {
   labelPosition: 'top',
   icon: <FavoriteBorder />,
   checkedIcon: <Favorite />,
-  fieldProps: { required: 'This field is required' },
-  formContext: { defaultValues: { demo2: ['second'] } },
+  fieldProps: { validate: validateNotEmpty },
+  formContext: { defaultValues: { demo2: 'second' } },
   options: defaultOptions,
 }

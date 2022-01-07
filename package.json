@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/mui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Kevin Gilbert",
   "description": "Material-UI implementation for Concrete Form",
   "keywords": [
@@ -61,8 +61,8 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/runtime": "^7.16.0",
-    "@concrete-form/formik": "^0.0.5",
-    "@concrete-form/react-hook-form": "^0.0.56",
+    "@concrete-form/formik": "^0.0.8",
+    "@concrete-form/react-hook-form": "^0.0.58",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@hookform/resolvers": "^2.8.3",

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import {
-  RadioProps as CoreRadioProps,
+  RadiosGroupProps as CoreRadiosGroupProps,
   useControlProps,
   useControlState,
   useControlActions,
@@ -20,11 +20,11 @@ import ItemLabel from '../layout/ItemLabel'
 
 type PartialMuiRadioProps = Omit<MuiRadioProps, 'checked'|'id'|'inputRef'|'name'|'value'|'ref'>
 
-export type RadioProps = CoreRadioProps<PartialMuiRadioProps, React.ReactNode> & {
+export type RadiosGroupProps = CoreRadiosGroupProps<PartialMuiRadioProps, React.ReactNode> & {
   formControlProps?: FormControlProps
 } & PartialMuiRadioProps
 
-const Radio: React.FC<RadioProps> = ({
+const RadiosGroup: React.FC<RadiosGroupProps> = ({
   name,
   options,
   orientation,
@@ -88,4 +88,4 @@ const Radio: React.FC<RadioProps> = ({
   )
 }
 
-export default Radio
+export default RadiosGroup

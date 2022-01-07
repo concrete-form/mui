@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import LabelledControl from './LabelledControl'
 import Input from '../Input'
-import Radio from '../Radio'
+import RadiosGroup from '../RadiosGroup'
 
 describe('LabelledControl', () => {
   it('render the label', () => {
@@ -54,7 +54,7 @@ describe('LabelledControl', () => {
   })
 
   it('doesn\'t link the label and control for input groups', () => {
-    render(<LabelledControl label="label-test"><Radio name="testInput" options={['foo']} /></LabelledControl>)
+    render(<LabelledControl label="label-test"><RadiosGroup name="testInput" options={['foo']} /></LabelledControl>)
     const radioInput = screen.getByRole('radio', { name: 'foo' })
     expect(radioInput).not.toBeChecked()
     userEvent.click(screen.getByText('label-test'))

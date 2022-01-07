@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from 'react'
 import {
-  CheckboxProps as CoreCheckboxProps,
+  CheckboxesGroupProps as CoreCheckboxesGroupProps,
   useControlProps,
   useControlState,
   useControlActions,
@@ -17,11 +17,11 @@ import ItemLabel from '../layout/ItemLabel'
 
 type PartialMuiCheckboxProps = Omit<MuiCheckboxProps, 'checked'|'defaultChecked'|'id'|'value'|'ref'>
 
-export type CheckboxProps = CoreCheckboxProps<PartialMuiCheckboxProps, React.ReactNode> & {
+export type CheckboxesGroupProps = CoreCheckboxesGroupProps<PartialMuiCheckboxProps, React.ReactNode> & {
   formControlProps?: FormControlProps
 } & PartialMuiCheckboxProps
 
-const Checkbox: React.FC<CheckboxProps> = ({
+const CheckboxesGroup: React.FC<CheckboxesGroupProps> = ({
   name,
   options,
   orientation,
@@ -96,4 +96,4 @@ const Checkbox: React.FC<CheckboxProps> = ({
   )
 }
 
-export default Checkbox
+export default CheckboxesGroup

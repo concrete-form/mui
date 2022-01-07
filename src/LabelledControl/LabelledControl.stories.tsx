@@ -4,7 +4,7 @@ import { formContext, FormContextArgs, argTypes } from '../storybook/formContext
 import { LabelledControlProps } from '@concrete-form/core'
 import LabelledControl from './LabelledControl'
 import Input from '../Input'
-import Checkbox from '../Checkbox'
+import CheckboxesGroup from '../CheckboxesGroup'
 
 export default {
   component: LabelledControl,
@@ -24,7 +24,7 @@ const templateWithSingleControl: Story<FormContextArgs<LabelledControlProps>> = 
 const templateWithControlGroup: Story<FormContextArgs<LabelledControlProps>> = ({ formContext, ...props }) => (
   <Container maxWidth="md">
     <LabelledControl {...props}>
-      <Checkbox name="demo" options={['foo', 'bar', 'baz']} fieldProps={{ required: true }} />
+      <CheckboxesGroup name="demo" options={['foo', 'bar', 'baz']} fieldProps={{ required: true }} />
     </LabelledControl>
   </Container>
 )
