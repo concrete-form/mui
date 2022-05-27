@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import RadiosGroup from './RadiosGroup'
 
 describe('Radio', () => {
-  it('render options', () => {
+   it('render options', () => {
     render(<RadiosGroup name="test" options={['foo', 'bar']} />)
     expect(screen.getByRole('radio', { name: 'foo' })).toBeInTheDocument()
     expect(screen.getByRole('radio', { name: 'bar' })).toBeInTheDocument()
@@ -95,7 +95,7 @@ describe('Radio', () => {
     render(<RadiosGroup name="test" options={['foo', 'bar']} />, { formValues: { test: 'bar' } })
     const fooOption = screen.getByRole('radio', { name: 'foo' })
     const barOption = screen.getByRole('radio', { name: 'bar' })
-    userEvent.click(fooOption)
+    await userEvent.click(fooOption)
     await waitFor(() => {
       expect(fooOption).toBeChecked()
     })
@@ -105,7 +105,7 @@ describe('Radio', () => {
   it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<RadiosGroup name="test" options={['foo']} onChange={callback} />)
-    userEvent.click(screen.getByRole('radio', { name: 'foo' }))
+    await userEvent.click(screen.getByRole('radio', { name: 'foo' }))
 
     await waitFor(() => {
       expect(callback).toHaveBeenCalled()
@@ -115,8 +115,8 @@ describe('Radio', () => {
   it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<RadiosGroup name="test" options={['foo']} onBlur={callback} />)
-    userEvent.click(screen.getByRole('radio', { name: 'foo' }))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('radio', { name: 'foo' }))
+    await userEvent.click(document.body)
 
     await waitFor(() => {
       expect(callback).toHaveBeenCalled()
@@ -126,8 +126,8 @@ describe('Radio', () => {
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
     render(<><RadiosGroup name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
-    userEvent.click(screen.getByRole('radio', { name: 'bar' }))
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('radio', { name: 'bar' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'bar' }, expect.anything())
@@ -143,7 +143,7 @@ describe('Radio', () => {
         <button type="submit">submit</button>
       </>
     ), { onSubmit })
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(screen.getByRole('radio', { name: 'foo' })).toBeInvalid()
     })

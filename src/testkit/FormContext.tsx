@@ -8,6 +8,7 @@ export type FormOptions = {
 }
 
 type FormContextProps = {
+  children?: React.ReactNode
   options?: FormOptions
 }
 

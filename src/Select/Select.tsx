@@ -55,7 +55,8 @@ const Select: React.FC<SelectProps> = ({
   const { value } = useControlState(name)
   const initialValue = useRef(value)
   const { setFieldValue } = useControlActions(name)
-  const parsedOptions = useMemo(() => parseSelectOptions(options, children), [options, children])
+  // fixme: TS is no longer to get the proper type base on "native" after React18 upgrade (now using "unknown")
+  const parsedOptions = useMemo(() => parseSelectOptions<unknown, unknown, unknown>(options, children), [options, children])
 
   useEffect(() => {
     if (allowEmpty || multiple || props.disabled || props.readOnly) {

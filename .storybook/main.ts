@@ -8,5 +8,8 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     // "storybook-addon-material-ui5" // fixme
-  ]
+  ],
+  core: {
+    builder: "webpack5"
+  },
 }

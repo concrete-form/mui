@@ -34,10 +34,10 @@ describe('CustomControl', () => {
     )
     const input = screen.getByRole('textbox')
     expect(input).toHaveDisplayValue('foo')
-    userEvent.clear(input)
-    userEvent.type(input, 'bar')
+    await userEvent.clear(input)
+    await userEvent.type(input, 'bar')
     expect(input).toHaveDisplayValue('bar')
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({
@@ -50,7 +50,7 @@ describe('CustomControl', () => {
     const formatter = (value?: string) => value?.toLocaleUpperCase()
     render(<CustomControl name="test" outgoingDataFormatter={formatter} applyLocally />)
     const input = screen.getByRole('textbox')
-    userEvent.type(input, 'foo')
+    await userEvent.type(input, 'foo')
 
     await waitFor(() => {
       expect(input).toHaveDisplayValue('FOO')
@@ -70,7 +70,7 @@ describe('CustomControl', () => {
       { formValues: { test: 'test' }, onSubmit },
     )
     expect(screen.getByRole('textbox')).toHaveDisplayValue('test')
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({
@@ -92,7 +92,7 @@ describe('CustomControl', () => {
       { formValues: { test: 'test' }, onSubmit },
     )
     expect(screen.getByRole('textbox')).toHaveDisplayValue('TEST')
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({

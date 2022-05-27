@@ -100,8 +100,8 @@ describe('CheckboxesGroup', () => {
     render(<CheckboxesGroup name="test" options={['foo', 'bar']} />, { formValues: { test: ['bar'] } })
     const fooOption = screen.getByRole('checkbox', { name: 'foo' })
     const barOption = screen.getByRole('checkbox', { name: 'bar' })
-    userEvent.click(fooOption)
-    userEvent.click(barOption)
+    await userEvent.click(fooOption)
+    await userEvent.click(barOption)
     await waitFor(() => {
       expect(fooOption).toBeChecked()
     })
@@ -111,7 +111,7 @@ describe('CheckboxesGroup', () => {
   it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<CheckboxesGroup name="test" options={['foo']} onChange={callback} />)
-    userEvent.click(screen.getByRole('checkbox', { name: 'foo' }))
+    await userEvent.click(screen.getByRole('checkbox', { name: 'foo' }))
 
     await waitFor(() => {
       expect(callback).toHaveBeenCalled()
@@ -121,8 +121,8 @@ describe('CheckboxesGroup', () => {
   it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<CheckboxesGroup name="test" options={['foo']} onBlur={callback} />)
-    userEvent.click(screen.getByRole('checkbox', { name: 'foo' }))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('checkbox', { name: 'foo' }))
+    await userEvent.click(document.body)
 
     await waitFor(() => {
       expect(callback).toHaveBeenCalled()
@@ -132,9 +132,9 @@ describe('CheckboxesGroup', () => {
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
     render(<><CheckboxesGroup name="test" options={['foo', 'bar', 'baz']} /><button type="submit">submit</button></>, { onSubmit })
-    userEvent.click(screen.getByRole('checkbox', { name: 'bar' }))
-    userEvent.click(screen.getByRole('checkbox', { name: 'baz' }))
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('checkbox', { name: 'bar' }))
+    await userEvent.click(screen.getByRole('checkbox', { name: 'baz' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: ['bar', 'baz'] }, expect.anything())
     })
@@ -144,9 +144,9 @@ describe('CheckboxesGroup', () => {
     const validateCheckbox = (values: any[]) => values?.length > 0 ? true : 'testing errors'
     render(<CheckboxesGroup name="test" options={['foo']} fieldProps={{ validate: { required: validateCheckbox } }} />)
     const fooOption = screen.getByRole('checkbox', { name: 'foo' })
-    userEvent.click(fooOption)
-    userEvent.click(fooOption)
-    userEvent.click(document.body)
+    await userEvent.click(fooOption)
+    await userEvent.click(fooOption)
+    await userEvent.click(document.body)
 
     await waitFor(() => {
       expect(fooOption).toBeInvalid()

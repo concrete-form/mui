@@ -29,33 +29,33 @@ describe('Input', () => {
     expect(screen.getByRole('textbox')).toHaveDisplayValue('foo')
   })
 
-  it('render new value when changed', () => {
+  it('render new value when changed', async () => {
     render(<Input name="test" />)
     const input = screen.getByRole('textbox')
-    userEvent.type(input, 'bar')
+    await userEvent.type(input, 'bar')
     expect(input).toHaveDisplayValue('bar')
   })
 
-  it('call onChange callback', () => {
+  it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<Input name="test" onChange={callback} />)
-    userEvent.type(screen.getByRole('textbox'), 'foo')
+    await userEvent.type(screen.getByRole('textbox'), 'foo')
     expect(callback).toHaveBeenCalledTimes(3)
   })
 
-  it('call onBlur callback', () => {
+  it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<Input name="test" onBlur={callback} />)
-    userEvent.click(screen.getByRole('textbox'))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('textbox'))
+    await userEvent.click(document.body)
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
   it('save data on the form', async () => {
     const onSubmit = jest.fn()
     render(<><Input name="test" /><button type="submit">submit</button></>, { onSubmit })
-    userEvent.type(screen.getByRole('textbox'), 'baz')
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.type(screen.getByRole('textbox'), 'baz')
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
     })
@@ -65,8 +65,8 @@ describe('Input', () => {
     render(<Input name="test" fieldProps={{ required: 'testing errors' }} />)
     const input = screen.getByRole('textbox')
     expect(input).toBeValid()
-    userEvent.click(input)
-    userEvent.click(document.body)
+    await userEvent.click(input)
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(input).toBeInvalid()
     })

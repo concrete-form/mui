@@ -46,11 +46,12 @@ const DateTime: React.FC<DateTimeProps> = ({
   const { setFieldValue } = useControlActions(name)
 
   const onChange = (value: Date | null, stringValue: string) => {
+    /* istanbul ignore next ; hard to test since the tests used the mobile version */
     if (stringValue) {
       setFieldValue(isValidDate(value) ? value : undefined, true)
       return
     }
-    setFieldValue(value ?? undefined, true)
+    setFieldValue(value, true)
   }
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>, ...rest: any) => {

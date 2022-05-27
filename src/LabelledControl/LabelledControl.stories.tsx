@@ -43,9 +43,9 @@ WithControlGroup.args = {
   labelPosition: 'left',
 }
 
-export const Customomized = templateWithControlGroup.bind({})
+export const Customized = templateWithControlGroup.bind({})
 
-Customomized.args = {
+Customized.args = {
   label: <>Inverted LabelledControl with <span style={{ color: 'deeppink' }}>4 / 8 columns</span> + custom styles.</>,
   labelPosition: 'right',
   mainGridProps: { style: { background: 'rgb(235, 235, 235)', borderRadius: 10, padding: 10 } },

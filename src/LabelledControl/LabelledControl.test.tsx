@@ -47,17 +47,17 @@ describe('LabelledControl', () => {
     expect(screen.getByRole('textbox', { name: 'label-test' })).toBeInTheDocument()
   })
 
-  it('link the label and control', () => {
+  it('link the label and control', async () => {
     render(<LabelledControl label="label-test"><Input name="testInput" /></LabelledControl>)
-    userEvent.click(screen.getByText('label-test'))
+    await userEvent.click(screen.getByText('label-test'))
     expect(screen.getByRole('textbox', { name: 'label-test' })).toHaveFocus()
   })
 
-  it('doesn\'t link the label and control for input groups', () => {
+  it('doesn\'t link the label and control for input groups', async () => {
     render(<LabelledControl label="label-test"><RadiosGroup name="testInput" options={['foo']} /></LabelledControl>)
     const radioInput = screen.getByRole('radio', { name: 'foo' })
     expect(radioInput).not.toBeChecked()
-    userEvent.click(screen.getByText('label-test'))
+    await userEvent.click(screen.getByText('label-test'))
     expect(radioInput).not.toBeChecked()
   })
 

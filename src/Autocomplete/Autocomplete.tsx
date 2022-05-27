@@ -71,6 +71,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
   return (
     <MuiAutocomplete
       {...controlledProps}
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onChange={onChange}
       defaultValue={initialValue.current !== '' ? initialValue.current : undefined}
       renderInput={params => (

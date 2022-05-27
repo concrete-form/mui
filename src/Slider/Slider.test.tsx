@@ -1,7 +1,9 @@
 import render from '../testkit/render'
-import { screen, fireEvent, waitFor } from '@testing-library/react'
+import { screen, fireEvent, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Slider from './Slider'
+
+const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
 describe('Slider', () => {
   it('render name prop', () => {
@@ -17,17 +19,27 @@ describe('Slider', () => {
   it('render new value when changed', async () => {
     render(<Slider name="test" />)
     const slider = screen.getByRole('slider')
-    // note: using fireEvent since it's pretty hard to test slider accurately with real user events
-    fireEvent.change(slider, { target: { value: 88 } })
-    await waitFor(() => {
-      expect(slider).toHaveDisplayValue('88')
+    // eslint-disable-next-line testing-library/no-unnecessary-act
+    await act(async () => {
+      // fixme: using fireEvent since it's pretty hard to test slider accurately with real user events
+      fireEvent.change(slider, { target: { value: 88 } })
+      await wait(10)
     })
+
+    expect(slider).toHaveDisplayValue('88')
   })
 
   it('call onChange callback', async () => {
     const callback = jest.fn()
     render(<Slider name="test" onChange={callback} />)
-    fireEvent.change(screen.getByRole('slider'), { target: { value: 99 } })
+
+    // eslint-disable-next-line testing-library/no-unnecessary-act
+    await act(async () => {
+      // fixme: using fireEvent since it's pretty hard to test slider accurately with real user events
+      fireEvent.change(screen.getByRole('slider'), { target: { value: 99 } })
+      await wait(10)
+    })
+
     await waitFor(() => {
       expect(callback).toHaveBeenCalled()
     })
@@ -46,7 +58,7 @@ describe('Slider', () => {
     const onSubmit = jest.fn()
     render(<><Slider name="test" /><button type="submit">submit</button></>, { onSubmit })
     fireEvent.change(screen.getByRole('slider'), { target: { value: 33 } })
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 33 }, expect.anything())
     })
@@ -124,7 +136,7 @@ describe('Slider', () => {
       expect(sliders[1]).toHaveDisplayValue('34')
       fireEvent.change(sliders[0], { target: { value: 10 } })
       fireEvent.change(sliders[1], { target: { value: 60 } })
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: [10, 60] }, expect.anything())
       })

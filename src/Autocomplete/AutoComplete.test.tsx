@@ -8,44 +8,44 @@ const options = ['foo', 'bar', 'baz']
 describe('Autocomplete', () => {
   it('render name prop', () => {
     render(<Autocomplete name="test" options={options} />)
-    expect(screen.getByRole('textbox')).toHaveAttribute('name', 'test')
+    expect(screen.getByRole('combobox')).toHaveAttribute('name', 'test')
   })
 
   it('render id prop', () => {
     render(<Autocomplete name="test" options={options} />)
-    expect(screen.getByRole('textbox')).toHaveAttribute('id')
+    expect(screen.getByRole('combobox')).toHaveAttribute('id')
   })
 
   it('render input as required', () => {
     render(<Autocomplete name="test" options={options} textFieldProps={{ required: true }} />)
-    const input = screen.getByRole('textbox')
+    const input = screen.getByRole('combobox')
     expect(input).toBeRequired()
   })
 
   it('render props to the input (with inputProps)', () => {
     render(<Autocomplete name="test" options={options} textFieldProps={{ inputProps: { 'data-test': 'foo' } }} />)
-    expect(screen.getByRole('textbox').dataset.test).toBe('foo')
+    expect(screen.getByRole('combobox').dataset.test).toBe('foo')
   })
 
   it('render initial value', () => {
     render(<Autocomplete name="test" options={options} />, { formValues: { test: 'foo' } })
-    expect(screen.getByRole('textbox')).toHaveDisplayValue('foo')
+    expect(screen.getByRole('combobox')).toHaveDisplayValue('foo')
   })
 
-  it('render new value when changed', () => {
+  it('render new value when changed', async () => {
     render(<Autocomplete name="test" options={options} />, { formValues: { test: '' } })
-    const input = screen.getByRole('textbox')
-    userEvent.type(input, 'bar')
+    const input = screen.getByRole('combobox')
+    await userEvent.type(input, 'bar')
     expect(input).toHaveDisplayValue('bar')
   })
 
   it('call onChange callback', async () => {
     const onChange = jest.fn()
     render(<Autocomplete name="test" options={options} onChange={onChange} />)
-    userEvent.type(screen.getByRole('textbox'), 'baz')
-    userEvent.click(screen.getByRole('option', { name: 'baz' }))
+    await userEvent.type(screen.getByRole('combobox'), 'baz')
+    await userEvent.click(screen.getByRole('option', { name: 'baz' }))
 
-    userEvent.click(document.body)
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(onChange).toHaveBeenCalled()
     })
@@ -65,11 +65,11 @@ describe('Autocomplete', () => {
       onSubmit,
       formValues: { test: 'foo' },
     })
-    const input = screen.getByRole('textbox')
+    const input = screen.getByRole('combobox')
 
-    userEvent.type(input, 'baz{arrowdown}{enter}')
+    await userEvent.type(input, 'baz{arrowdown}{enter}')
 
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'foo' }, expect.anything())
     })
@@ -78,8 +78,8 @@ describe('Autocomplete', () => {
   it('call onBlur callback', async () => {
     const callback = jest.fn()
     render(<Autocomplete name="test" options={options} onBlur={callback} />)
-    userEvent.click(screen.getByRole('textbox'))
-    userEvent.click(document.body)
+    await userEvent.click(screen.getByRole('combobox'))
+    await userEvent.click(document.body)
     await waitFor(() => {
       expect(callback).toHaveBeenCalled()
     })
@@ -88,11 +88,11 @@ describe('Autocomplete', () => {
   it('save data on the form when an option is selected', async () => {
     const onSubmit = jest.fn()
     render(<><Autocomplete name="test" options={options} /><button type="submit">submit</button></>, { onSubmit })
-    const input = screen.getByRole('textbox')
+    const input = screen.getByRole('combobox')
 
-    userEvent.type(input, 'baz{arrowdown}{enter}')
+    await userEvent.type(input, 'baz{arrowdown}{enter}')
 
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'baz' }, expect.anything())
     })
@@ -101,11 +101,11 @@ describe('Autocomplete', () => {
   it('save data on the form when a value is type with freeSolo enabled', async () => {
     const onSubmit = jest.fn()
     render(<><Autocomplete name="test" options={options} freeSolo /><button type="submit">submit</button></>, { onSubmit })
-    const input = screen.getByRole('textbox')
+    const input = screen.getByRole('combobox')
 
-    userEvent.type(input, 'Hello')
+    await userEvent.type(input, 'Hello')
 
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: 'Hello' }, expect.anything())
     })
@@ -122,13 +122,13 @@ describe('Autocomplete', () => {
       onSubmit,
       formValues: { test: ['foo', 'a', 'b'] },
     })
-    const input = screen.getByRole('textbox')
+    const input = screen.getByRole('combobox')
     // removing option "a"
     const optionA = screen.getByRole('button', { name: 'a' })
-    userEvent.click(within(optionA).getByTestId('CancelIcon'))
+    await userEvent.click(within(optionA).getByTestId('CancelIcon'))
     // creating option "c"
-    userEvent.type(input, 'c{enter}')
-    userEvent.click(screen.getByRole('button', { name: 'submit' }))
+    await userEvent.type(input, 'c{enter}')
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: ['foo', 'b', 'c'] }, expect.anything())
     })
@@ -136,10 +136,10 @@ describe('Autocomplete', () => {
 
   it('handle validation error', async () => {
     render(<Autocomplete name="test" options={options} fieldProps={{ required: 'testing errors' }} />)
-    const input = screen.getByRole('textbox')
+    const input = screen.getByRole('combobox')
     expect(input).toBeValid()
-    userEvent.click(input)
-    userEvent.click(document.body)
+    await userEvent.click(input)
+    await userEvent.click(document.body)
 
     await waitFor(() => {
       expect(input).toBeInvalid()
@@ -161,10 +161,10 @@ describe('Autocomplete', () => {
           <button type="submit">submit</button>
         </>
       ), { onSubmit, formValues: { test: 'foo' } })
-      const input = screen.getByRole('textbox')
-      userEvent.hover(input)
-      userEvent.click(await screen.findByLabelText('Clear'))
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      const input = screen.getByRole('combobox')
+      await userEvent.hover(input)
+      await userEvent.click(await screen.findByLabelText('Clear'))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: '' }, expect.anything())
       })
@@ -178,10 +178,10 @@ describe('Autocomplete', () => {
           <button type="submit">submit</button>
         </>
       ), { onSubmit, formValues: { test: ['foo'] } })
-      const input = screen.getByRole('textbox')
-      userEvent.hover(input)
-      userEvent.click(await screen.findByLabelText('Clear'))
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      const input = screen.getByRole('combobox')
+      await userEvent.hover(input)
+      await userEvent.click(await screen.findByLabelText('Clear'))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: [] }, expect.anything())
       })
@@ -190,11 +190,11 @@ describe('Autocomplete', () => {
     it('ignores invalid input', async () => {
       const onSubmit = jest.fn()
       render(<><Autocomplete name="test" options={options} /><button type="submit">submit</button></>, { onSubmit })
-      const input = screen.getByRole('textbox')
+      const input = screen.getByRole('combobox')
 
-      userEvent.type(input, 'invalid data')
+      await userEvent.type(input, 'invalid data')
 
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ test: undefined }, expect.anything())
       })
