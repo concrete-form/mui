@@ -77,6 +77,8 @@ const Slider: React.FC<SliderProps> = ({
           {...controlledProps}
           orientation={orientation}
           defaultValue={initialValue.current}
+          // fixme ! disabled controlled input because that's causing a bug with range values
+          // value={value}
         />
       </Box>
       { label && labelPosition === 'bottom' && renderLabel() }

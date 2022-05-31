@@ -73,6 +73,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
       {...controlledProps}
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onChange={onChange}
+      value={value || null}
       defaultValue={initialValue.current !== '' ? initialValue.current : undefined}
       renderInput={params => (
         <TextFieldWithErrors

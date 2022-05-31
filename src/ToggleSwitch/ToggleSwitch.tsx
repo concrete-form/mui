@@ -57,11 +57,12 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
             <Box style={styles.input}>
               <Switch
                 {...controlledProps}
-                defaultChecked={!!initialValue.current}
+                // defaultChecked={!!initialValue.current}
                 inputProps={{
                   ...props.inputProps,
                   'aria-invalid': props['aria-invalid'],
                 }}
+                checked={!!value}
               />
             </Box>
           )}

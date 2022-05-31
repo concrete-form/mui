@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import {
   SingleCheckboxProps as CoreSingleCheckboxProps,
+  useControlState,
   useCustomControlProps,
 } from '@concrete-form/core'
 import MuiCheckbox, { CheckboxProps as MuiCheckboxProps } from '@mui/material/Checkbox'
@@ -25,6 +26,7 @@ const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   formControlProps,
   ...inputProps
 }) => {
+  const { value } = useControlState(name)
   const props = useCustomControlProps(name, {
     incomingDataFormatter: (value?: boolean) => !!value,
     outgoingDataFormatter: (value: string) => !!value,
@@ -49,6 +51,8 @@ const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
                 ...(props as any)?.inputProps,
                 'aria-invalid': (props as any)['aria-invalid'],
               }}
+              defaultChecked={undefined}
+              checked={!!value}
             />
           )}
           label={label}
