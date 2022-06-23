@@ -1,7 +1,7 @@
 import Form from '@concrete-form/react-hook-form'
 import { useForm, UseFormProps, SubmitHandler } from 'react-hook-form'
-import { LocalizationProvider } from '@mui/lab/'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 
 export type FormContextArgs<T> = {
   formContext?: UseFormProps

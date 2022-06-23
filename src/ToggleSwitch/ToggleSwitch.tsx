@@ -31,7 +31,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   const props = useControlProps(name, inputProps)
   const { setFieldValue } = useControlActions(name)
   const { value } = useControlState(name)
-  const initialValue = useRef(value)
+  // const initialValue = useRef(value)
   const styles = useMemo(() => fixMuiLabelPosition('vertical', labelPosition), [labelPosition])
 
   useEffect(() => {

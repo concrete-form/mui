@@ -5,9 +5,9 @@ import {
   useControlActions,
   mergeEventHandlers,
 } from '@concrete-form/core'
-import DatePicker, { DatePickerProps } from '@mui/lab/DatePicker'
-import TimePicker, { TimePickerProps } from '@mui/lab/TimePicker'
-import DateTimePicker, { DateTimePickerProps } from '@mui/lab/DateTimePicker'
+import { DatePicker, DatePickerProps } from '@mui/x-date-pickers/DatePicker'
+import { TimePicker, TimePickerProps } from '@mui/x-date-pickers/TimePicker'
+import { DateTimePicker, DateTimePickerProps } from '@mui/x-date-pickers/DateTimePicker'
 import { TextFieldProps } from '@mui/material/TextField'
 
 import TextFieldWithErrors from '../util/TextFieldWithErrors'
@@ -16,15 +16,15 @@ import { isValidDate } from '../util/date'
 
 type TypeDateProps = {
   type?: 'date'
-} & DatePickerProps<any>
+} & DatePickerProps<any, any>
 
 type TypeTimeProps = {
   type: 'time'
-} & TimePickerProps<any>
+} & TimePickerProps<any, any>
 
 type TypeDateTimeProps = {
   type: 'datetime'
-} & DateTimePickerProps<any>
+} & DateTimePickerProps<any, any>
 
 type DateTimeInputProps = TypeTimeProps | TypeDateTimeProps | TypeDateProps
 type PartialDateTimeInputProps = Omit<DateTimeInputProps, 'renderInput'|'inputRef'|'value'|'onChange'|'ref'>
@@ -77,7 +77,7 @@ const DateTime: React.FC<DateTimeProps> = ({
               onBlur={mergeEventHandlers(textFieldProps?.onBlur, onBlur)}
             />
           )}
-          {...(controlledProps as unknown as Omit<TimePickerProps<any>, 'renderInput'|'value'>)}
+          {...(controlledProps as unknown as Omit<TimePickerProps<any, any>, 'renderInput'|'value'>)}
           value={value ?? null}
         />
       )
@@ -94,7 +94,7 @@ const DateTime: React.FC<DateTimeProps> = ({
               onBlur={mergeEventHandlers(textFieldProps?.onBlur, onBlur)}
             />
           )}
-          {...(controlledProps as unknown as Omit<DateTimePickerProps<any>, 'renderInput'|'value'>)}
+          {...(controlledProps as unknown as Omit<DateTimePickerProps<any, any>, 'renderInput'|'value'>)}
           value={value ?? null}
         />
       )
@@ -112,7 +112,7 @@ const DateTime: React.FC<DateTimeProps> = ({
               onBlur={mergeEventHandlers(textFieldProps?.onBlur, onBlur)}
             />
           )}
-          {...(controlledProps as unknown as Omit<DatePickerProps<any>, 'renderInput'|'value'>)}
+          {...(controlledProps as unknown as Omit<DatePickerProps<any, any>, 'renderInput'|'value'>)}
           value={value ?? null}
         />
       )

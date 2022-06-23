@@ -133,7 +133,7 @@ const Select: React.FC<SelectProps> = ({
   }
 
   const controlledProps = getControlledProps(props, selectProps, { onChange, onBlur })
-  const defaultValue = multiple ? (initialValue.current ?? []) : (initialValue.current ?? '')
+  // const defaultValue = multiple ? (initialValue.current ?? []) : (initialValue.current ?? '')
 
   return (
     <TextFieldWithErrors

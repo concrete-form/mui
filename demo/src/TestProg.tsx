@@ -20,25 +20,26 @@ const Content: React.FC = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      // formContext.setValue('text', 'baz')
+      formContext.setValue('text', 'baz')
       // formContext.setValue('array', ['bar', 'baz'])
       // formContext.setValue('date', new Date())
-      formContext.setValue('bool', true)
+      // formContext.setValue('bool', true)
       // formContext.setValue('number', 75)
-    }, 2000)
+    }, 5000)
     return () => clearTimeout(timeout)
   }, [])
 
   return (
     <>
-      { /* <Autocomplete
+      <Autocomplete
+        freeSolo
         name="text"
         options={[
           'foo',
           'bar',
           'baz',
         ]}
-      /> */ }
+      />
       { /* <Input name="text" /> */ }
       { /* <CheckboxesGroup
         name="array"
@@ -61,7 +62,7 @@ const Content: React.FC = () => {
       { /* <SingleCheckbox name="bool" /> */ }
       { /* <Slider name="number" /> */ }
       { /* <Textarea name="text" /> */ }
-      <ToggleSwitch name="bool" />
+      { /* <ToggleSwitch name="bool" /> */ }
 
       <pre>
         { JSON.stringify(data, undefined, 2) }
