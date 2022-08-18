@@ -35,7 +35,10 @@ describe('DateTime', () => {
     await userEvent.click(input)
     await userEvent.click(screen.getByRole('button', { name: 'Jan 15, 2000' }))
     await userEvent.click(screen.getByRole('button', { name: 'OK' }))
-    await userEvent.click(await screen.findByRole('button', { name: 'submit' }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'submit' })).toBeEnabled()
+    })
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith({ test: new Date('2000-01-15T00:00:00.000') }, expect.anything())
