@@ -12,4 +12,3 @@ export { default as Slider } from './Slider'
 export { default as CustomControl } from './CustomControl'
 export { default as SubmitButton } from './SubmitButton'
 export { default as LabelledControl } from './LabelledControl'
-

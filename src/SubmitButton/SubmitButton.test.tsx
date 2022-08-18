@@ -68,8 +68,8 @@ describe('SubmitButton', () => {
     expect(screen.getByRole('button')).toHaveTextContent('submit')
     await waitFor(() => {
       expect(screen.getByRole('button')).toBeEnabled()
-      expect(screen.getByRole('button')).toHaveTextContent('submit')
     })
+    expect(screen.getByRole('button')).toHaveTextContent('submit')
   })
 
   it('render custom loading component and disapear after', async () => {

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import RadiosGroup from './RadiosGroup'
 
 describe('Radio', () => {
-   it('render options', () => {
+  it('render options', () => {
     render(<RadiosGroup name="test" options={['foo', 'bar']} />)
     expect(screen.getByRole('radio', { name: 'foo' })).toBeInTheDocument()
     expect(screen.getByRole('radio', { name: 'bar' })).toBeInTheDocument()
