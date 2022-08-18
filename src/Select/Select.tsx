@@ -59,7 +59,7 @@ const Select: React.FC<SelectProps> = ({
   const parsedOptions = useMemo(() => parseSelectOptions<unknown, unknown, unknown>(options, children), [options, children])
 
   useEffect(() => {
-    if (allowEmpty || multiple || props.disabled || props.readOnly) {
+    if (typeof initialValue !== undefined || allowEmpty || multiple || props.disabled || props.readOnly) {
       return
     }
     const firstValue = getFirstValue(parsedOptions)
