@@ -7,11 +7,11 @@ import FormikForm from '@concrete-form/formik'
 
 import Autocomplete from '@concrete-form/mui/Autocomplete'
 import Input from '@concrete-form/mui/Input'
-import CheckboxesGroup from '@concrete-form/mui/CheckboxesGroup'
+import CheckboxGroup from '@concrete-form/mui/CheckboxGroup'
 import CustomControl from '@concrete-form/mui/CustomControl'
 import DateTime from '@concrete-form/mui/DateTime'
 import FileInput from '@concrete-form/mui/FileInput'
-import RadiosGroup from '@concrete-form/mui/RadiosGroup'
+import RadioGroup from '@concrete-form/mui/RadioGroup'
 import Select from '@concrete-form/mui/Select'
 import SingleCheckbox from '@concrete-form/mui/SingleCheckbox'
 import Slider from '@concrete-form/mui/Slider'
@@ -172,7 +172,7 @@ const FormContent: React.FC = () => (
     <Autocomplete name="autocomplete4" textFieldProps={{ label: 'Multiple freeSolo' }} options={autoCompleteOptions} multiple freeSolo />
 
     <h2>Checkbox</h2>
-    <CheckboxesGroup name="checkbox" options={options} />
+    <CheckboxGroup name="checkbox" options={options} />
 
     <h2>CustomControl</h2>
     <CustomControl
@@ -183,9 +183,9 @@ const FormContent: React.FC = () => (
     />
 
     <h2>DateTime</h2>
-    <DateTime type="date" name="date" textFieldProps={{ label: 'Date' }} />
-    <DateTime type="time" name="time" textFieldProps={{ label: 'Time' }} />
-    <DateTime type="datetime" name="datetime" textFieldProps={{ label: 'Date + Time' }} />
+    <DateTime type="date" name="date" label="Date" />
+    <DateTime type="time" name="time" label="Time" />
+    <DateTime type="datetime" name="datetime" label="Date + Time" />
 
     <h2>FileInput</h2>
     <FileInput name="fileinput" />
@@ -197,7 +197,7 @@ const FormContent: React.FC = () => (
     <Input name="input4" label="input email" type="email" />
 
     <h2>Radio</h2>
-    <RadiosGroup name="radio" options={radioOptions} />
+    <RadioGroup name="radio" options={radioOptions} />
 
     <h2>Select</h2>
     <Select name="select1" options={options} textFieldProps={{ label: 'Standard' }} allowEmpty />

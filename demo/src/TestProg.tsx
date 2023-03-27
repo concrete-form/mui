@@ -4,10 +4,10 @@ import { useForm, useFormContext, useWatch } from 'react-hook-form'
 import Form from '@concrete-form/react-hook-form'
 
 import Autocomplete from '@concrete-form/mui/Autocomplete'
-import CheckboxesGroup from '@concrete-form/mui/CheckboxesGroup'
+import CheckboxGroup from '@concrete-form/mui/CheckboxGroup'
 import DateTime from '@concrete-form/mui/DateTime'
 import Input from '@concrete-form/mui/Input'
-import RadiosGroup from '@concrete-form/mui/RadiosGroup'
+import RadioGroup from '@concrete-form/mui/RadioGroup'
 import Select from '@concrete-form/mui/Select'
 import SingleCheckbox from '@concrete-form/mui/SingleCheckbox'
 import Slider from '@concrete-form/mui/Slider'
@@ -41,7 +41,7 @@ const Content: React.FC = () => {
         ]}
       />
       { /* <Input name="text" /> */ }
-      { /* <CheckboxesGroup
+      { /* <CheckboxGroup
         name="array"
         options={[
           'foo',
@@ -50,7 +50,7 @@ const Content: React.FC = () => {
         ]}
       /> */ }
       { /* <DateTime name="date" /> */ }
-      { /* <RadiosGroup
+      { /* <RadioGroup
         name="text"
         options={[
           'foo',

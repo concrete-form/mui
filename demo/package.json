@@ -11,6 +11,7 @@
     "@hookform/resolvers": "link:../node_modules/@hookform/resolvers",
     "@mui/icons-material": "link:../node_modules/@mui/icons-material",
     "@mui/material": "link:../node_modules/@mui/material",
+    "@mui/x-date-pickers": "link:../node_modules/@mui/x-date-pickers",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "link:../node_modules/@testing-library/react",
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",
@@ -31,7 +32,7 @@
   },
   "scripts": {
     "start:umd": "serve .",
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider node ../node_modules/react-scripts/bin/react-scripts.js start",
     "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node ../node_modules/react-scripts/bin/react-scripts.js test"
   },

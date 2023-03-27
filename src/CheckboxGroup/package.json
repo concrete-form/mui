@@ -1,6 +1,6 @@
 {
   "sideEffects": false,
   "module": "./index.js",
-  "main": "../cjs/RadiosGroup/index.js",
+  "main": "../cjs/CheckboxGroup/index.js",
   "types": "./index.d.ts"
 }

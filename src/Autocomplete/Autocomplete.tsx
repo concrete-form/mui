@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import {
   AutocompleteProps as CoreAutocompleteProps,
   useControlProps,
@@ -27,7 +27,6 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
   const { value } = useControlState(name)
   const { setFieldValue } = useControlActions(name)
   const initialValue = useRef(value)
-
   const multiple = !!inputProps.multiple
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {

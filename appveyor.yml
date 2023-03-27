@@ -2,7 +2,7 @@ version: '{build}'
 skip_tags: true
 environment:
   matrix:
-    - nodejs_version: 'LTS'
+    - nodejs_version: '16'
   COVERALLS_REPO_TOKEN:
     secure: OAz2fw22TLFjq+05DgPyOlGDb75DDwZ02LLEsRIFbr7K2+6iyK7XrSd5HzhrpRQE
   CHROMATIC_PROJECT_TOKEN:

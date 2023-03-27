@@ -3,11 +3,11 @@
 import Form from '@concrete-form/react-hook-form'
 import Autocomplete from '@concrete-form/mui/Autocomplete'
 import Input from '@concrete-form/mui/Input'
-import CheckboxesGroup from '@concrete-form/mui/CheckboxesGroup'
+import CheckboxGroup from '@concrete-form/mui/CheckboxGroup'
 import CustomControl from '@concrete-form/mui/CustomControl'
 import DateTime from '@concrete-form/mui/DateTime'
 import FileInput from '@concrete-form/mui/FileInput'
-import RadiosGroup from '@concrete-form/mui/RadiosGroup'
+import RadioGroup from '@concrete-form/mui/RadioGroup'
 import Select from '@concrete-form/mui/Select'
 import SingleCheckbox from '@concrete-form/mui/SingleCheckbox'
 import Slider from '@concrete-form/mui/Slider'
@@ -32,9 +32,9 @@ const values = {
   // input3: 123,
   // checkbox1: ['foo', 'biz'],
   // customcontrol: 'I\'m aLl UppeRCaSe !',
-  // date: new Date(),
-  // time: new Date(),
-  // datetime: new Date(),
+  date: new Date(),
+  time: new Date(),
+  datetime: new Date(),
   // radio1: 'bar',
   // radio2: 'biz',
   // select1: 'bar',
@@ -44,7 +44,7 @@ const values = {
   // singlecheckbox1: true,
   // singlecheckbox2: false,
   // slider1: 75,
-  slider2: [30, 60],
+  // slider2: [30, 60],
   // textarea1: 'foo\nbar\nbaz\nbiz',
   // toggleswitch1: true,
   // toggleswitch2: false,
@@ -100,7 +100,7 @@ const InputsDemo: React.FC = () => {
       >
         <Form form={form} onSubmit={onSubmit}>
 
-          <h2>ToggleSwitch</h2>
+          {/* <h2>ToggleSwitch</h2>
           <ToggleSwitch name="toggleswitch1" fieldProps={{ required: true }} label="top top top top top" labelPosition="top" />
           <ToggleSwitch name="toggleswitch2" label="bottom bottom bottom bottom bottom" labelPosition="bottom" />
           <ToggleSwitch name="toggleswitch3" label="left left left left left" labelPosition="left" />
@@ -127,8 +127,8 @@ const InputsDemo: React.FC = () => {
           <Select name="select4" options={nativeGroupOptions} fieldProps={{ required: true }} multiple native />
 
           <h2>Radio</h2>
-          <RadiosGroup name="radio1" options={options} fieldProps={{ validate: { required: validateRadio } }} />
-          <RadiosGroup name="radio2" options={options} orientation="horizontal" labelPosition="top" icon={<FavoriteBorder />} checkedIcon={<Favorite />} fieldProps={{ validate: { required: validateRadio } }} />
+          <RadioGroup name="radio1" options={options} fieldProps={{ validate: { required: validateRadio } }} />
+          <RadioGroup name="radio2" options={options} orientation="horizontal" labelPosition="top" icon={<FavoriteBorder />} checkedIcon={<Favorite />} fieldProps={{ validate: { required: validateRadio } }} />
 
           <h2>Input</h2>
           <Input name="input1" label="Standard input" fieldProps={{ required: true }} />
@@ -136,14 +136,14 @@ const InputsDemo: React.FC = () => {
           <Input name="input3" type="number" label="Input number" />
 
           <h2>FileInput</h2>
-          <FileInput name="fileinput1" />
+          <FileInput name="fileinput1" /> */}
 
           <h2>DateTime</h2>
-          <DateTime type="date" name="date" textFieldProps={{ label: 'Date' }} fieldProps={{ required: true }} />
-          <DateTime type="time" name="time" textFieldProps={{ label: 'Time' }} fieldProps={{ required: true }} />
-          <DateTime type="datetime" name="datetime" textFieldProps={{ label: 'Date + Time' }} fieldProps={{ required: true }} />
+          <DateTime type="date" name="date" label="Date" fieldProps={{ required: true }} />
+          <DateTime type="time" name="time" label="Time" fieldProps={{ required: true }} />
+          <DateTime type="datetime" name="datetime" label="Date + Time" fieldProps={{ required: true }} />
 
-          <h2>CustomControl</h2>
+          {/* <h2>CustomControl</h2>
           <CustomControl
             name="customcontrol"
             outgoingDataFormatter={(value?: string) => value?.toLocaleUpperCase()}
@@ -153,13 +153,13 @@ const InputsDemo: React.FC = () => {
           />
 
           <h2>Checkbox</h2>
-          <CheckboxesGroup name="checkbox1" options={options} fieldProps={{ validate: { required: validateCheckbox } }} />
-          <CheckboxesGroup name="checkbox2" options={['foo', 'bar']} orientation="horizontal" labelPosition="top" icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+          <CheckboxGroup name="checkbox1" options={options} fieldProps={{ validate: { required: validateCheckbox } }} />
+          <CheckboxGroup name="checkbox2" options={['foo', 'bar']} orientation="horizontal" labelPosition="top" icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
 
           <h2>Autocomplete</h2>
           <Autocomplete name="autocomplete1" textFieldProps={{ label: 'Standard autocomplete' }} options={autoCompleteOptions} fieldProps={{ required: true }} />
           <Autocomplete freeSolo name="autocomplete2" textFieldProps={{ label: 'Freesolo autocomplete' }} options={autoCompleteOptions} />
-          <Autocomplete name="autocomplete3" textFieldProps={{ label: 'Empty autocomplete' }} options={autoCompleteOptions} />
+          <Autocomplete name="autocomplete3" textFieldProps={{ label: 'Empty autocomplete' }} options={autoCompleteOptions} /> */}
 
           <SubmitButton>Submit</SubmitButton>
         </Form>

@@ -5,11 +5,11 @@ import { useState } from 'react'
 import Form from '@concrete-form/react-hook-form'
 import Autocomplete from '@concrete-form/mui/Autocomplete'
 import Input from '@concrete-form/mui/Input'
-import CheckboxesGroup from '@concrete-form/mui/CheckboxesGroup'
+import CheckboxGroup from '@concrete-form/mui/CheckboxGroup'
 import CustomControl from '@concrete-form/mui/CustomControl'
 import DateTime from '@concrete-form/mui/DateTime'
 import FileInput from '@concrete-form/mui/FileInput'
-import RadiosGroup from '@concrete-form/mui/RadiosGroup'
+import RadioGroup from '@concrete-form/mui/RadioGroup'
 import Select from '@concrete-form/mui/Select'
 import SingleCheckbox from '@concrete-form/mui/SingleCheckbox'
 import Slider from '@concrete-form/mui/Slider'
@@ -121,7 +121,7 @@ const LabelledInputDemo: React.FC = () => {
       <Typography variant="h3" component="h1">Labelled controls demo</Typography>
 
       <Form form={configForm}>
-        <RadiosGroup name="labelPosition" options={['left', 'right', 'top', 'bottom']} orientation="horizontal" />
+        <RadioGroup name="labelPosition" options={['left', 'right', 'top', 'bottom']} orientation="horizontal" />
         <ToggleSwitch name="customTheme" label="Use custom theme" />
 
         { ['left', 'right'].includes(labelPosition) && customTheme && (
@@ -156,7 +156,7 @@ const LabelledInputDemo: React.FC = () => {
         </LabelledControl>
 
         <LabelledControl label="Radio" {...defaultLabelledControl}>
-          <RadiosGroup name="radio1" options={options} fieldProps={{ validate: { required: validateRadio } }} />
+          <RadioGroup name="radio1" options={options} fieldProps={{ validate: { required: validateRadio } }} />
         </LabelledControl>
 
         <LabelledControl label="Input" {...defaultLabelledControl}>
@@ -168,7 +168,7 @@ const LabelledInputDemo: React.FC = () => {
         </LabelledControl>
 
         <LabelledControl label="DateTime" {...defaultLabelledControl}>
-          <DateTime type="date" name="date" textFieldProps={{ label: 'Date' }} fieldProps={{ required: true }} />
+          <DateTime type="date" name="date" label="Date" fieldProps={{ required: true }} />
         </LabelledControl>
 
         <LabelledControl label="CustomControl" {...defaultLabelledControl}>
@@ -183,7 +183,7 @@ const LabelledInputDemo: React.FC = () => {
         </LabelledControl>
 
         <LabelledControl label="Checkbox" {...defaultLabelledControl}>
-          <CheckboxesGroup name="checkbox1" options={options} fieldProps={{ validate: { required: validateCheckbox } }} />
+          <CheckboxGroup name="checkbox1" options={options} fieldProps={{ validate: { required: validateCheckbox } }} />
         </LabelledControl>
 
         <LabelledControl label="Autocomplete" {...defaultLabelledControl}>

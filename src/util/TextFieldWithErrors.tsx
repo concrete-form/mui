@@ -23,9 +23,9 @@ const TextFieldWithErrors: React.FC<TextFieldWithErrorsProps> = ({ name, childre
 
   const control = (
     <TextField
-      name={name}
       fullWidth
       {...textFieldProps}
+      name={name}
       helperText={errors.length > 0 ? renderErrors() : textFieldProps?.helperText}
       error={errors.length > 0}
     >

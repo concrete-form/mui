@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import {
-  RadiosGroupProps as CoreRadiosGroupProps,
+  RadioGroupProps as CoreRadioGroupProps,
   useControlProps,
   useControlState,
   useControlActions,
@@ -9,7 +9,7 @@ import {
   removeEventHandlers,
   extractEventHandlers,
 } from '@concrete-form/core'
-import RadioGroup from '@mui/material/RadioGroup'
+import MuiRadioGroup from '@mui/material/RadioGroup'
 import MuiRadio, { RadioProps as MuiRadioProps } from '@mui/material/Radio'
 import { FormControlProps } from '@mui/material/FormControl'
 
@@ -20,11 +20,11 @@ import ItemLabel from '../layout/ItemLabel'
 
 type PartialMuiRadioProps = Omit<MuiRadioProps, 'checked'|'id'|'inputRef'|'name'|'value'|'ref'>
 
-export type RadiosGroupProps = CoreRadiosGroupProps<PartialMuiRadioProps, React.ReactNode> & {
+export type RadioGroupProps = CoreRadioGroupProps<PartialMuiRadioProps, React.ReactNode> & {
   formControlProps?: FormControlProps
 } & PartialMuiRadioProps
 
-const RadiosGroup: React.FC<RadiosGroupProps> = ({
+const RadioGroup: React.FC<RadioGroupProps> = ({
   name,
   options,
   orientation,
@@ -47,7 +47,7 @@ const RadiosGroup: React.FC<RadiosGroupProps> = ({
 
   return (
     <ControlWithErrors name={name} {...formControlProps}>
-      <RadioGroup
+      <MuiRadioGroup
         onChange={mergeEventHandlers(inputProps?.onChange, onChange)}
         value={fieldValue ?? ''}
       >
@@ -83,9 +83,9 @@ const RadiosGroup: React.FC<RadiosGroupProps> = ({
             </>
           )}
         />
-      </RadioGroup>
+      </MuiRadioGroup>
     </ControlWithErrors>
   )
 }
 
-export default RadiosGroup
+export default RadioGroup

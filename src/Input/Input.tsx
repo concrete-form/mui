@@ -6,22 +6,21 @@ import { TextFieldProps } from '@mui/material/TextField'
 
 import TextFieldWithErrors from '../util/TextFieldWithErrors'
 
-type PartialTextFieldProps = Omit<TextFieldProps, 'defaultValue'|'id'|'inputRef'|'name'|'select'|'SelectProps'|'value'|'ref'>
+type PartialTextFieldProps = Omit<TextFieldProps, 'defaultValue'|'inputRef'|'name'|'select'|'SelectProps'|'value'|'ref'>
 export type InputProps = CoreInputProps & PartialTextFieldProps
 
 const Input: React.FC<InputProps> = ({
   name,
   ...inputProps
 }) => {
-  const { ref, type, value, ...props } = useControlProps(name, inputProps)
+  const { ref, ...props } = useControlProps(name, inputProps)
 
   return (
     <TextFieldWithErrors
+      {...props}
       name={name}
       inputRef={ref}
-      {...props}
-      type={type}
-      value={type === 'file' ? undefined : value}
+      value={undefined}
     />
   )
 }

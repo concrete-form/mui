@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/concrete-form/concrete-form">
-    <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/master/doc/logo.png" width="100" />
+    <img alt="Concrete Form" src="https://raw.githubusercontent.com/concrete-form/concrete-form/main/doc/logo.png" width="100" />
   </a>
 </p>
 
@@ -40,9 +40,9 @@ yarn add @concrete-form/mui
 npm install @concrete-form/mui
 ```
 ## Storybook
-[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://master--6193c82ff0559c003a4fdcba.chromatic.com/)
+[![Storybook](https://img.shields.io/badge/Storybook-%23E06A8C?style=flat-square&logo=storybook&labelColor=%23ececec)](https://main--6193c82ff0559c003a4fdcba.chromatic.com/)
 
-Thanks to [Chromatic](https://www.chromatic.com/) (They're awesome !)
+Thanks to [Chromatic](https://www.chromatic.com/)
 
 ## Doc and examples
 https://concrete-form.com/docs/controls/mui/api

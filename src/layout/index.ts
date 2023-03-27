@@ -1,6 +1,17 @@
-export type { ControlLayoutProps } from './Control'
-export type { ErrorsLayoutProps } from './Errors'
-export type { ItemLabelLayoutProps } from './ItemLabel'
-export type { ItemsGroupLayoutProps } from './ItemsGroup'
-export type { LabelLayoutProps } from './Label'
-export type { LabelledControlLayoutProps } from './LabelledControl'
+export { default as ControlLayout } from './Control'
+export * from './Control'
+
+export { default as ErrorsLayout } from './Errors'
+export * from './Errors'
+
+export { default as ItemLabelLayout } from './ItemLabel'
+export * from './ItemLabel'
+
+export { default as ItemsGroupLayout } from './ItemsGroup'
+export * from './ItemsGroup'
+
+export { default as LabelLayout } from './Label'
+export * from './Label'
+
+export { default as LabelledControlLayout } from './LabelledControl'
+export * from './LabelledControl'
