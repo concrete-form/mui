@@ -29,9 +29,7 @@ type TypeDateTimeProps = {
 type DateTimeInputProps = TypeTimeProps | TypeDateTimeProps | TypeDateProps
 type PartialDateTimeInputProps = Omit<DateTimeInputProps, 'inputRef'|'value'|'onChange'|'ref'>
 
-export type DateTimeProps = CoreDateTimeProps & {
-  returnDateObject?: boolean
-} & PartialDateTimeInputProps
+export type DateTimeProps = CoreDateTimeProps & PartialDateTimeInputProps
 
 const DateTime: React.FC<DateTimeProps> = ({
   name,
