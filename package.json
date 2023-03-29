@@ -1,6 +1,6 @@
 {
     "name": "@concrete-form/mui",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Kevin Gilbert",
     "description": "Material-UI implementation for Concrete Form",
     "keywords": [
@@ -43,7 +43,7 @@
         "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006"
     },
     "peerDependencies": {
-        "@concrete-form/core": ">=1.0.3",
+        "@concrete-form/core": ">=1.0.4",
         "@mui/material": ">=5.0.0",
         "@mui/x-date-pickers": ">=6.0.0",
         "react": ">=18.0.0"
@@ -59,8 +59,8 @@
         "@babel/plugin-transform-runtime": "^7.18.5",
         "@babel/plugin-transform-typescript": "^7.18.4",
         "@babel/runtime": "^7.18.3",
-        "@concrete-form/formik": "^1.0.2",
-        "@concrete-form/react-hook-form": "^1.0.2",
+        "@concrete-form/formik": "^1.0.3",
+        "@concrete-form/react-hook-form": "^1.0.3",
         "@emotion/react": "^11.9.3",
         "@emotion/styled": "^11.9.3",
         "@hookform/resolvers": "^2.9.1",

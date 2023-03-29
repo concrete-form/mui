@@ -9,9 +9,9 @@ describe('SingleCheckbox', () => {
     expect(screen.getByRole('checkbox')).toHaveAttribute('name', 'test')
   })
 
-  it('render id prop', () => {
+  it('doesn\'t render id prop', () => {
     render(<SingleCheckbox name="test" />)
-    expect(screen.getByRole('checkbox')).toHaveAttribute('id')
+    expect(screen.getByRole('checkbox')).not.toHaveAttribute('id')
   })
 
   it('render input as required', () => {

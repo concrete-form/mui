@@ -8,7 +8,7 @@ const LabelledControl: React.FC<LabelledControlLayoutProps> = (props) => {
   const {
     control,
     label,
-    labelPosition = 'left',
+    labelPosition = 'top',
     mainGridProps,
     labelGridProps,
     controlGridProps,

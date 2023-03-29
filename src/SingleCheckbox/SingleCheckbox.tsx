@@ -20,21 +20,19 @@ export type SingleCheckboxProps = CoreSingleCheckboxProps & {
 
 const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
   name,
-  applyInitialValue = false,
   label,
   labelPosition,
   formControlProps,
   ...inputProps
 }) => {
   const { value } = useControlState(name)
-  const props = useCustomControlProps(name, {
+  const { id, ...props } = useCustomControlProps(name, {
     incomingDataFormatter: (value?: boolean) => !!value,
     outgoingDataFormatter: (value: string) => !!value,
-    formatInitialValue: applyInitialValue,
   }, {
     ...inputProps,
     type: 'checkbox',
-  })
+  }) as any
   const styles = useMemo(() => fixMuiLabelPosition('vertical', labelPosition), [labelPosition])
 
   return (
@@ -48,8 +46,8 @@ const SingleCheckbox: React.FC<SingleCheckboxProps> = ({
               style={styles.input}
               {...props}
               inputProps={{
-                ...(props as any)?.inputProps,
-                'aria-invalid': (props as any)['aria-invalid'],
+                ...props?.inputProps,
+                'aria-invalid': props?.['aria-invalid'],
               }}
               defaultChecked={undefined}
               checked={!!value}

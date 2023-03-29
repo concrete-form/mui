@@ -31,7 +31,6 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   const props = useControlProps(name, inputProps)
   const { setFieldValue } = useControlActions(name)
   const { value } = useControlState(name)
-  // const initialValue = useRef(value)
   const styles = useMemo(() => fixMuiLabelPosition('vertical', labelPosition), [labelPosition])
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
     setFieldValue(value, true, true)
   }
 
-  const controlledProps = getControlledProps(props, inputProps, { onChange })
+  const { id, ...controlledProps } = getControlledProps(props, inputProps, { onChange }) as any
 
   return (
     <ControlWithErrors name={name} {...formControlProps}>
@@ -57,7 +56,6 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
             <Box style={styles.input}>
               <Switch
                 {...controlledProps}
-                // defaultChecked={!!initialValue.current}
                 inputProps={{
                   ...props.inputProps,
                   'aria-invalid': props['aria-invalid'],

@@ -17,9 +17,9 @@ describe('LabelledControl', () => {
     expect(screen.getByTestId('foo')).toBeInTheDocument()
   })
 
-  it('render the label at left by default', () => {
+  it('render the label on top by default', () => {
     render(<LabelledControl label="label-test" />)
-    expect(screen.getByTestId('labelled-control').dataset?.labelPosition).toBe('left')
+    expect(screen.getByTestId('labelled-control').dataset?.labelPosition).toBe('top')
   })
 
   it('render left label', () => {
